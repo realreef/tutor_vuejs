@@ -6,9 +6,6 @@
 
     <title>Laravel</title>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
     <!-- Styles -->
     <style>
       body {
@@ -66,7 +63,7 @@
     </div>
 
     <script src="{{ asset('assets/js/vue.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+    <script src="{{ asset('assets/js/lodash.min.js') }}"></script>
 
     @include('components.table-list')
 
