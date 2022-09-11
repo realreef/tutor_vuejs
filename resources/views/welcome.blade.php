@@ -6,9 +6,6 @@
 
     <title>Laravel</title>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
     <!-- Styles -->
     <style>
       body {
@@ -57,11 +54,16 @@
         Meters : <input type="text" v-model="m"> --}}
 
         {{-- use component --}}
-        {{-- <table-list :datas="datas"></table-list> --}}
+        {{-- <button @click="showTable(true)">show table</button>
+        <button @click="showTable(false)">hide table</button>
+        <br> --}}
+        {{-- <input type="text" v-model="addTable">
+        <button @click="clickAddListTable">Add list</button>
+        <table-list :datas="datas"></table-list> --}}
     </div>
 
     <script src="{{ asset('assets/js/vue.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+    <script src="{{ asset('assets/js/lodash.min.js') }}"></script>
 
     @include('components.table-list')
 
@@ -80,14 +82,20 @@
             answer: '',
             km: 0,
             m: 0,
+            isShowTable: false,
+            addTable: null,
             datas: [
                 {id: 1, name: 'Laravel'},
                 {id: 2, name: 'Vue.js'}
-            ]
+            ],
+            ctDatas: 0
           }
         },
         created() {
             this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
+        },
+        updated() {
+            this.ctDatas = this.datas.length
         },
         filters: {
             capitalize: (value) => {
@@ -124,6 +132,19 @@
                     this.answer = 'saya tidak ngerti apa itu ' + this.question
                 }
                 return
+            },
+            showTable(isShown) {
+                this.isShowTable = isShown
+            },
+            clickAddListTable() {
+                if (this.addTable !== null) {
+                    this.datas.push({
+                        id: this.ctDatas + parseInt(1),
+                        name: this.addTable
+                    })
+
+                    this.addTable = null
+                }
             }
         },
         watch: {
