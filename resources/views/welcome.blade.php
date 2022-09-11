@@ -58,6 +58,8 @@
         <button @click="showTable(false)">hide table</button>
         <br>
         <table-list :datas="datas" v-if="isShowTable"></table-list> --}}
+
+
         {{-- <input type="text" v-model="addTable">
         <button @click="clickAddListTable">Add list</button>
         <table-list :datas="datas"></table-list> --}}
