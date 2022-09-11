@@ -22,5 +22,8 @@
 
             }
         },
+        destroyed() {
+            console.log('destroyed hooks')
+        },
     })
 </script>

@@ -56,7 +56,8 @@
         {{-- use component --}}
         {{-- <button @click="showTable(true)">show table</button>
         <button @click="showTable(false)">hide table</button>
-        <br> --}}
+        <br>
+        <table-list :datas="datas" v-if="isShowTable"></table-list> --}}
         {{-- <input type="text" v-model="addTable">
         <button @click="clickAddListTable">Add list</button>
         <table-list :datas="datas"></table-list> --}}
@@ -70,6 +71,7 @@
     <script>
       var app = new Vue({
         delimiters: ['${', '}'],
+        // template: '<div id="template">${ message }</div>',
         data() {
           return {
             message: 'its work!!',
@@ -92,9 +94,20 @@
           }
         },
         created() {
+            // console.log('created hooks')
+            // console.log(this.message)
+            // console.log(document.getElementById('template'))
+            // console.log('')
             this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
         },
+        mounted() {
+            // console.log('mounted hooks')
+            // console.log(this.message)
+            // console.log(document.getElementById('template'))
+            // console.log('')
+        },
         updated() {
+            console.log('updated hooks')
             this.ctDatas = this.datas.length
         },
         filters: {
