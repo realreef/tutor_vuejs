@@ -109,7 +109,7 @@
             // console.log('')
         },
         updated() {
-            console.log('updated hooks')
+            // console.log('updated hooks')
             this.ctDatas = this.datas.length
         },
         filters: {
